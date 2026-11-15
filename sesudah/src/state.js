@@ -1,6 +1,6 @@
-import { muatCatatan, simpanCatatan } from './storage.js';
+import { muat, simpan } from './storage.js';
 
-let daftarCatatan = muatCatatan();
+let daftarCatatan = muat();
 
 export function semua() {
   return daftarCatatan;
@@ -14,7 +14,7 @@ export function tambah(judul, mk) {
     dibuat: new Date().toISOString(),
     disematkan: false
   });
-  simpanCatatan(daftarCatatan);
+  simpan(daftarCatatan);
 }
 
 export function alihSemat(id) {
@@ -23,12 +23,12 @@ export function alihSemat(id) {
       daftarCatatan[i].disematkan = !daftarCatatan[i].disematkan;
     }
   }
-  simpanCatatan(daftarCatatan);
+  simpan(daftarCatatan);
 }
 
 export function hapus(id) {
   daftarCatatan = daftarCatatan.filter((c) => c.id !== id);
-  simpanCatatan(daftarCatatan);
+  simpan(daftarCatatan);
 }
 
 export function cari(kata) {
